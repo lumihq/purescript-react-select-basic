@@ -1,4 +1,4 @@
-module Autocomplete where
+module Basic where
 
 import Prelude
 

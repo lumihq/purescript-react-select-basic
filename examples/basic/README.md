@@ -1,4 +1,4 @@
-# Autocomplete Example
+# Basic Example
 
 ## Building
 
