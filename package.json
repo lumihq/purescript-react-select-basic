@@ -4,18 +4,13 @@
   "description": "purescript-react-basic bindings for react-select",
   "main": "index.js",
   "scripts": {
-    "test": "pulp test"
+    "test": "pulp build"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lumihq/purescript-react-select-basic.git"
   },
-  "keywords": [
-    "react",
-    "react-basic",
-    "react-select",
-    "purescript"
-  ],
+  "keywords": ["react", "react-basic", "react-select", "purescript"],
   "author": "",
   "license": "Apache-2.0",
   "bugs": {

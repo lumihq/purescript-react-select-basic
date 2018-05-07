@@ -1,4 +1,15 @@
-module Autocomplete where
+# purescript-react-select-basic
+
+[react-basic](https://github.com/lumihq/purescript-react-basic) bindings for [react-select](https://github.com/JedWatson/react-select)
+
+## Docs
+
+Available on [Pursuit](https://pursuit.purescript.org/packages/purescript-react-select-basic)
+
+## Example
+
+```purescript
+module Example where
 
 import Prelude
 
@@ -37,3 +48,4 @@ component = react { displayName: "Counter", initialState, receiveProps, render }
         , value: "c"
         }
       ]
+```
