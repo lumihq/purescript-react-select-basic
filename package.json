@@ -4,7 +4,9 @@
   "description": "purescript-react-basic bindings for react-select",
   "main": "index.js",
   "scripts": {
-    "test": "pulp build"
+    "build": "pulp build && npm run build:examples",
+    "build:examples": "echo \"todo\"",
+    "test": "npm run build"
   },
   "repository": {
     "type": "git",
