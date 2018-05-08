@@ -12,7 +12,7 @@ import React.Basic (ReactComponent, createElement, react)
 import React.Basic.ReactSelect (asyncMultiSelect)
 
 component :: ReactComponent {}
-component = react { displayName: "Counter", initialState, receiveProps, render }
+component = react { displayName: "MultiAsyncExample", initialState, receiveProps, render }
   where
     initialState =
       { selectedValue: []

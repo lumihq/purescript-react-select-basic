@@ -9,7 +9,7 @@ import React.Basic (ReactComponent, createElement, react)
 import React.Basic.ReactSelect (singleSelect)
 
 component :: ReactComponent {}
-component = react { displayName: "Counter", initialState, receiveProps, render }
+component = react { displayName: "BasicExample", initialState, receiveProps, render }
   where
     initialState =
       { selectedValue: Nothing
