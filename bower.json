@@ -1,6 +1,7 @@
 {
   "name": "purescript-react-select-basic",
   "ignore": ["**/.*", "node_modules", "bower_components", "output"],
+  "license": "Apache-2.0",
   "dependencies": {
     "purescript-prelude": "^3.3.0",
     "purescript-react-basic": "^0.10.0",
