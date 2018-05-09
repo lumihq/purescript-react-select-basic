@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "pulp build && npm run build:examples",
-    "build:examples": "echo \"todo\"",
+    "build:examples": "find examples -maxdepth 2 -type f -iname makefile -execdir make \\;",
     "test": "npm run build"
   },
   "repository": {
