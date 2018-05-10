@@ -6,7 +6,6 @@
   "scripts": {
     "build": "pulp build && npm run build:examples",
     "build:examples": "PATH=`echo $PATH | sed -e 's/:\\.\\/node_modules\\/\\.bin//'` find examples -maxdepth 2 -type f -iname makefile -execdir make \\;",
-    "path": "PATH=`echo $PATH | sed -e 's/:\\.\\/node_modules\\/\\.bin//'` echo $PATH",
     "test": "npm run build"
   },
   "repository": {
