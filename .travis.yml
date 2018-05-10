@@ -1,10 +1,6 @@
 language: node_js
 node_js: 8
 
-# local paths in PATH break `find -execdir`
-before_script:
-  - PATH=${PATH//:\.\/node_modules\/\.bin/}
-
 install:
   - npm install
 
