@@ -2,6 +2,8 @@
 
 [react-basic](https://github.com/lumihq/purescript-react-basic) bindings for [react-select](https://github.com/JedWatson/react-select)
 
+[![Build Status](https://travis-ci.org/lumihq/purescript-react-select-basic.svg?branch=master)](https://travis-ci.org/lumihq/purescript-react-select-basic)
+
 ## Docs
 
 Available on [Pursuit](https://pursuit.purescript.org/packages/purescript-react-select-basic)
