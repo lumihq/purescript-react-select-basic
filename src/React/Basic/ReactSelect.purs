@@ -2,9 +2,10 @@ module React.Basic.ReactSelect where
 
 import Prelude
 
-import Control.Monad.Eff.Uncurried (EffFn1)
-import Control.Monad.Promise (Promise)
 import Data.Nullable (Nullable)
+import Effect.Promise (Promise)
+import Effect.Uncurried (EffectFn1)
+import Prim.Row (class Union)
 import React.Basic (JSX, ReactComponent)
 import React.Basic.DOM (CSS)
 
@@ -27,23 +28,21 @@ type SelectProps additionalData props =
   | props
   )
 
-type SingleChangeCallback eff additionalData =
-  EffFn1
-    eff
+type SingleChangeCallback additionalData =
+  EffectFn1
     (Nullable (SelectOption additionalData))
     Unit
 
-type MultiChangeCallback eff additionalData =
-  EffFn1
-    eff
+type MultiChangeCallback additionalData =
+  EffectFn1
     (Nullable (Array (SelectOption additionalData)))
     Unit
 
 -- | Basic single-select picker
 foreign import singleSelect
-  :: forall rest rest_ eff additionalData
+  :: forall rest rest_ additionalData
    . Union rest rest_
-       (SelectProps additionalData (onChange :: SingleChangeCallback eff additionalData))
+       (SelectProps additionalData (onChange :: SingleChangeCallback additionalData))
   => ReactComponent
       { value :: String
       , options :: Array (SelectOption additionalData)
@@ -52,10 +51,10 @@ foreign import singleSelect
 
 -- | Basic multi-select picker
 foreign import multiSelect
-  :: forall rest rest_ eff additionalData
+  :: forall rest rest_ additionalData
    . Union rest rest_
       (SelectProps additionalData
-        (onChange :: MultiChangeCallback eff additionalData))
+        (onChange :: MultiChangeCallback additionalData))
   => ReactComponent
       { value :: Array String
       , options :: Array (SelectOption additionalData)
@@ -64,24 +63,24 @@ foreign import multiSelect
 
 -- | Single-select picker which loads options asynchronously
 foreign import asyncSingleSelect
-  :: forall rest rest_ eff additionalData
+  :: forall rest rest_ additionalData
    . Union rest rest_
       (SelectProps additionalData
-        (onChange :: SingleChangeCallback eff additionalData))
+        (onChange :: SingleChangeCallback additionalData))
   => ReactComponent
       { value :: String
-      , loadOptions :: String -> Promise eff { options :: Array (SelectOption additionalData) }
+      , loadOptions :: String -> Promise { options :: Array (SelectOption additionalData) }
       | rest
       }
 
 -- | Multi-select picker which loads options asynchronously
 foreign import asyncMultiSelect
-  :: forall rest rest_ eff additionalData
+  :: forall rest rest_ additionalData
    . Union rest rest_
       (SelectProps additionalData
-        (onChange :: MultiChangeCallback eff additionalData))
+        (onChange :: MultiChangeCallback additionalData))
   => ReactComponent
       { value :: Array String
-      , loadOptions :: String -> Promise eff { options :: Array (SelectOption additionalData) }
+      , loadOptions :: String -> Promise { options :: Array (SelectOption additionalData) }
       | rest
       }

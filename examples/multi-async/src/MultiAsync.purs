@@ -2,12 +2,12 @@ module MultiAsync where
 
 import Prelude
 
-import Control.Monad.Eff.Uncurried (mkEffFn1)
-import Control.Monad.Promise (delay)
-import Control.Monad.Promise.Unsafe (undefer)
 import Data.Foldable (traverse_)
 import Data.Nullable (toMaybe)
 import Data.Time.Duration (Milliseconds(..))
+import Effect.Promise (delay)
+import Effect.Promise.Unsafe (undefer)
+import Effect.Uncurried (mkEffectFn1)
 import React.Basic (ReactComponent, createElement, react)
 import React.Basic.ReactSelect (asyncMultiSelect)
 
@@ -25,7 +25,7 @@ component = react { displayName: "MultiAsyncExample", initialState, receiveProps
       createElement asyncMultiSelect
         { value: map _.value state.selectedValue
         , loadOptions
-        , onChange: mkEffFn1 $ toMaybe >>> traverse_ \newValue ->
+        , onChange: mkEffectFn1 $ toMaybe >>> traverse_ \newValue ->
             setState _ { selectedValue = newValue }
         }
 

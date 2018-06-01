@@ -15,14 +15,14 @@ module Example where
 
 import Prelude
 
-import Control.Monad.Eff.Uncurried (mkEffFn1)
 import Data.Maybe (Maybe(Nothing), maybe)
 import Data.Nullable (toMaybe)
+import Effect.Uncurried (mkEffectFn1)
 import React.Basic (ReactComponent, createElement, react)
 import React.Basic.ReactSelect (singleSelect)
 
 component :: ReactComponent {}
-component = react { displayName: "Example", initialState, receiveProps, render }
+component = react { displayName: "BasicExample", initialState, receiveProps, render }
   where
     initialState =
       { selectedValue: Nothing
@@ -35,7 +35,7 @@ component = react { displayName: "Example", initialState, receiveProps, render }
       createElement singleSelect
         { value: maybe "" _.value state.selectedValue
         , options
-        , onChange: mkEffFn1 $ \newValue ->
+        , onChange: mkEffectFn1 $ \newValue ->
             setState _ { selectedValue = toMaybe newValue }
         }
 
