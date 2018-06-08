@@ -10,6 +10,8 @@
     "react-select": "^1.2.1"
   },
   "devDependencies": {
-    "browserify": "^16.1.0"
+    "browserify": "^16.1.0",
+    "pulp": "^12.3.0",
+    "purescript": "^0.11.7"
   }
 }

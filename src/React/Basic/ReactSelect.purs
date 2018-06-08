@@ -45,7 +45,7 @@ foreign import singleSelect
    . Union rest rest_
        (SelectProps additionalData (onChange :: SingleChangeCallback eff additionalData))
   => ReactComponent
-      { value :: String
+      { value :: (SelectOption additionalData)
       , options :: Array (SelectOption additionalData)
       | rest
       }
@@ -57,7 +57,7 @@ foreign import multiSelect
       (SelectProps additionalData
         (onChange :: MultiChangeCallback eff additionalData))
   => ReactComponent
-      { value :: Array String
+      { value :: Array (SelectOption additionalData)
       , options :: Array (SelectOption additionalData)
       | rest
       }
@@ -69,7 +69,7 @@ foreign import asyncSingleSelect
       (SelectProps additionalData
         (onChange :: SingleChangeCallback eff additionalData))
   => ReactComponent
-      { value :: String
+      { value :: SelectOption additionalData
       , loadOptions :: String -> Promise eff { options :: Array (SelectOption additionalData) }
       | rest
       }
@@ -81,7 +81,7 @@ foreign import asyncMultiSelect
       (SelectProps additionalData
         (onChange :: MultiChangeCallback eff additionalData))
   => ReactComponent
-      { value :: Array String
+      { value :: Array (SelectOption additionalData)
       , loadOptions :: String -> Promise eff { options :: Array (SelectOption additionalData) }
       | rest
       }

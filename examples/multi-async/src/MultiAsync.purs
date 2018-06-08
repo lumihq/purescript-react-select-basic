@@ -15,7 +15,7 @@ component :: ReactComponent {}
 component = react { displayName: "MultiAsyncExample", initialState, receiveProps, render }
   where
     initialState =
-      { selectedValue: []
+      { selectedValues: []
       }
 
     receiveProps _ _ _ =
@@ -23,23 +23,41 @@ component = react { displayName: "MultiAsyncExample", initialState, receiveProps
 
     render _ state setState =
       createElement asyncMultiSelect
-        { value: map _.value state.selectedValue
+        { value: state.selectedValues
         , loadOptions
-        , onChange: mkEffFn1 $ toMaybe >>> traverse_ \newValue ->
-            setState _ { selectedValue = newValue }
+        , onChange: mkEffFn1 $ toMaybe >>> traverse_ \newValues ->
+            setState _ { selectedValues = newValues }
         }
 
     loadOptions searchTxt =
       undefer $ delay (Milliseconds 500.0)
-        { options:
-            [ { label: "A"
-              , value: "a"
-              }
-            , { label: "B"
-              , value: "b"
-              }
-            , { label: "C"
-              , value: "c"
-              }
-            ]
-        }
+        case searchTxt of
+          "foo" ->
+            { options:
+                [ { label: "A"
+                  , value: "a"
+                  }
+                , { label: "B"
+                  , value: "b"
+                  }
+                , { label: "C"
+                  , value: "c"
+                  }
+                , { label: "Foo"
+                  , value: "foo"
+                  }
+                ]
+            }
+          _ ->
+            { options:
+                [ { label: "A"
+                  , value: "a"
+                  }
+                , { label: "B"
+                  , value: "b"
+                  }
+                , { label: "C"
+                  , value: "c"
+                  }
+                ]
+            }
