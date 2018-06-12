@@ -45,7 +45,7 @@ foreign import singleSelect
    . Union rest rest_
        (SelectProps additionalData (onChange :: SingleChangeCallback eff additionalData))
   => ReactComponent
-      { value :: (SelectOption additionalData)
+      { value :: Nullable (SelectOption additionalData)
       , options :: Array (SelectOption additionalData)
       | rest
       }
@@ -69,7 +69,7 @@ foreign import asyncSingleSelect
       (SelectProps additionalData
         (onChange :: SingleChangeCallback eff additionalData))
   => ReactComponent
-      { value :: SelectOption additionalData
+      { value :: Nullable (SelectOption additionalData)
       , loadOptions :: String -> Promise eff { options :: Array (SelectOption additionalData) }
       | rest
       }
