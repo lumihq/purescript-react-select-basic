@@ -2,9 +2,9 @@ module Basic where
 
 import Prelude
 
-import Control.Monad.Eff.Uncurried (mkEffFn1)
 import Data.Maybe (Maybe(Nothing), maybe)
 import Data.Nullable (toMaybe)
+import Effect.Uncurried (mkEffectFn1)
 import React.Basic (ReactComponent, createElement, react)
 import React.Basic.ReactSelect (singleSelect)
 
@@ -22,7 +22,7 @@ component = react { displayName: "BasicExample", initialState, receiveProps, ren
       createElement singleSelect
         { value: maybe "" _.value state.selectedValue
         , options
-        , onChange: mkEffFn1 $ \newValue ->
+        , onChange: mkEffectFn1 $ \newValue ->
             setState _ { selectedValue = toMaybe newValue }
         }
 
