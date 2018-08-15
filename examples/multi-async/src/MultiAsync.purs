@@ -8,11 +8,11 @@ import Data.Time.Duration (Milliseconds(..))
 import Effect.Promise (delay)
 import Effect.Promise.Unsafe (undefer)
 import Effect.Uncurried (mkEffectFn1)
-import React.Basic (ReactComponent, createElement, react)
+import React.Basic as React
 import React.Basic.ReactSelect (asyncMultiSelect)
 
-component :: ReactComponent {}
-component = react { displayName: "MultiAsyncExample", initialState, receiveProps, render }
+component :: React.Component {}
+component = React.component { displayName: "MultiAsyncExample", initialState, receiveProps, render }
   where
     initialState =
       { selectedValue: []
@@ -22,7 +22,7 @@ component = react { displayName: "MultiAsyncExample", initialState, receiveProps
       pure unit
 
     render _ state setState =
-      createElement asyncMultiSelect
+      React.element asyncMultiSelect
         { value: map _.value state.selectedValue
         , loadOptions
         , onChange: mkEffectFn1 $ toMaybe >>> traverse_ \newValue ->
