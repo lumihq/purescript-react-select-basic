@@ -6,7 +6,7 @@ import Data.Nullable (Nullable)
 import Effect.Promise (Promise)
 import Effect.Uncurried (EffectFn1)
 import Prim.Row (class Union)
-import React.Basic (JSX, ReactComponent)
+import React.Basic (JSX, Component)
 import React.Basic.DOM (CSS)
 
 type SelectOption additionalData =
@@ -43,7 +43,7 @@ foreign import singleSelect
   :: forall rest rest_ additionalData
    . Union rest rest_
        (SelectProps additionalData (onChange :: SingleChangeCallback additionalData))
-  => ReactComponent
+  => Component
       { value :: String
       , options :: Array (SelectOption additionalData)
       | rest
@@ -55,7 +55,7 @@ foreign import multiSelect
    . Union rest rest_
       (SelectProps additionalData
         (onChange :: MultiChangeCallback additionalData))
-  => ReactComponent
+  => Component
       { value :: Array String
       , options :: Array (SelectOption additionalData)
       | rest
@@ -67,7 +67,7 @@ foreign import asyncSingleSelect
    . Union rest rest_
       (SelectProps additionalData
         (onChange :: SingleChangeCallback additionalData))
-  => ReactComponent
+  => Component
       { value :: String
       , loadOptions :: String -> Promise { options :: Array (SelectOption additionalData) }
       | rest
@@ -79,7 +79,7 @@ foreign import asyncMultiSelect
    . Union rest rest_
       (SelectProps additionalData
         (onChange :: MultiChangeCallback additionalData))
-  => ReactComponent
+  => Component
       { value :: Array String
       , loadOptions :: String -> Promise { options :: Array (SelectOption additionalData) }
       | rest
